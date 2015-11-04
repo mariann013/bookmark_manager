@@ -4,7 +4,7 @@ feature "to view links" do
 
   scenario "view links on homepage" do
     Link.create(:url => "http://www.google.com", :title => "Google")
-    visit "/links"
+    visit "/"
     within "ul#links" do
       expect(page).to have_content "Google"
     end
