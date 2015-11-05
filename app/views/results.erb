@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Related links</title>
+</head>
+<body>
+  <% @links.each do |link| %>
+  <ul>
+    <li> <%= link.url %> </li>
+  </ul>
+  <% end %>
+</body>
+</html>
