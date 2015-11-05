@@ -1,12 +1,21 @@
-<h1> Title </h1>
-  <ul id=links>
-    <% @links.each do | l | %>
-      <li> Title: <%= l.title %>
-          url: <%= l.url %>
-      </li>
-    <% end %>
-  </ul>
-
-  <form action= '/links/new' method='get'>
-    <input type= 'submit' value='New bookmark' />
-  </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Links</title>
+  <link rel="StyleSheet" type="text/css" href="master.css">
+</head>
+<body>
+  <h1> Title </h1>
+    <ul id=links>
+      <% @links.each do | l | %>
+        <li> Title: <%= l.title %>
+            url: <%= l.url %>
+        </li>
+      <% end %>
+    </ul>
+    <form action= '/links/new' method='get'>
+      <input type= 'submit' value='New bookmark' />
+    </form>
+</body>
+</html>
