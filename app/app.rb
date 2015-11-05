@@ -1,5 +1,8 @@
 require 'sinatra/base'
 require_relative './models/link.rb'
+require 'data_mapper'
+require 'dm-postgres-adapter'
+require_relative 'data_mapper_setup'
 
 
 class BookmarkManager < Sinatra::Base
@@ -16,7 +19,10 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
-    Link.create(:url => params[:url], :title => params[:title])
+    link = Link.create(:url => params[:url], :title => params[:title])
+    tag = Tag.create(:name => params[:tag])
+    link.tags << tag
+    link.save
     redirect '/links'
   end
   # start the server if ruby file executed directly

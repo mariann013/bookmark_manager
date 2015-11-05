@@ -1,11 +1,12 @@
 require 'spec_helper'
+require_relative 'web_helpers'
 
 feature 'Creating Tags' do
   scenario 'create tag' do
     create_link
-    click_button 'Add tag'
-    fill_in :tag, with: 'Social Media'
-    click_button 'Done'
-    expect(page).to have_content 'Social Media'
+    fill_in :tag, with: 'Search'
+    click_button 'Submit'
+    # link = Link.first
+    expect(Link.first.tags.map(&:name)*"").to eq('Search')
   end
 end
