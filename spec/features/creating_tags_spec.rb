@@ -10,3 +10,11 @@ feature 'Creating Tags' do
     expect(Link.first.tags.map(&:name)*"").to eq('Search')
   end
 end
+feature 'Adding multiple tags' do
+  scenario 'add more than one tag' do
+    create_link
+    fill_in :tag, with: 'Search Homepage'
+    click_button 'Submit'
+    expect(Link.first.tags.map(&:name)).to include("Search", "Homepage")
+  end
+end
