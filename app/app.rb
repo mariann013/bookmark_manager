@@ -1,13 +1,16 @@
+ENV['RACK_ENV'] = 'development'
+
 require 'sinatra/base'
 require_relative './models/link.rb'
 require_relative './models/user.rb'
+require_relative 'data_mapper_setup'
 require 'data_mapper'
 require 'dm-postgres-adapter'
-require_relative 'data_mapper_setup'
-
 
 
 class BookmarkManager < Sinatra::Base
+  enable 'sessions'
+  set :secret_session, 'secret stuff'
   get '/' do
     erb :homepage
   end
@@ -22,6 +25,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/registration' do
     user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
+    session[:user_id] = user.id
     redirect to '/links'
   end
 
@@ -61,7 +65,11 @@ class BookmarkManager < Sinatra::Base
     erb :results
   end
 
-
+  helpers do
+   def current_user
+     @current_user ||= User.get(session[:user_id])
+   end
+ end
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
