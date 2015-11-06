@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Form to submit a new link' do
 
   scenario 'When we want to create a new link' do
-    visit '/'
+    visit '/links'
     click_button 'New bookmark'
     fill_in :url, with: 'http://www.facebook.com'
     fill_in :title, with: 'Facebook'

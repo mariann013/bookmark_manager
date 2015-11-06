@@ -3,6 +3,7 @@ require_relative 'web_helpers'
 
 feature 'Creating Tags' do
   scenario 'create tag' do
+    visit '/links'
     create_link
     fill_in :tag, with: 'Search'
     click_button 'Submit'
@@ -12,6 +13,7 @@ feature 'Creating Tags' do
 end
 feature 'Adding multiple tags' do
   scenario 'add more than one tag' do
+    visit '/links'
     create_link
     fill_in :tag, with: 'Search Homepage'
     click_button 'Submit'

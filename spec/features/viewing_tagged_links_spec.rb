@@ -4,6 +4,7 @@ require_relative 'web_helpers'
 feature 'showing correctly tagged links' do
   scenario 'show tagged links' do
     visit '/'
+    click_button 'Sign in'
     click_button 'New bookmark'
     fill_in :url, with: 'bubbles.com'
     fill_in :title, with: 'bubbles world'

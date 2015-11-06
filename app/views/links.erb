@@ -6,7 +6,7 @@
   <link rel="StyleSheet" type="text/css" href="styles/master.css">
 </head>
 <body>
-  <h1> Title </h1>
+  <p>Welcome to Bookmark Manager, <%= @username %></p>
     <ul id=links>
       <% @links.each do | l | %>
         <li> Title: <%= l.title %>
