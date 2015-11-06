@@ -17,14 +17,11 @@ before(:each) do
   click_button 'Submit'
 end
 
-# scenario "user count increaees by 1" do
-#
-#
-# end
+scenario "user count increaees by 1" do
+  expect(page).to have_content 'User Count:1'
+end
 
 scenario "welcome message for new user" do
   expect(page).to have_content "Welcome to Bookmark Manager, Bob123"
 end
-
-
 end

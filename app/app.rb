@@ -26,6 +26,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/links' do
+    @user_count = User.count
     user = User.first
     @username = user.username unless user.nil?
     @links = Link.all
