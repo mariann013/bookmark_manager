@@ -11,6 +11,7 @@ require 'dm-postgres-adapter'
 class BookmarkManager < Sinatra::Base
   enable 'sessions'
   set :secret_session, 'secret stuff'
+  
   get '/' do
     erb :homepage
   end
@@ -69,7 +70,7 @@ class BookmarkManager < Sinatra::Base
    def current_user
      @current_user ||= User.get(session[:user_id])
    end
- end
+  end
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
